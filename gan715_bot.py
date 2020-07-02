@@ -18,16 +18,16 @@ TOKEN = '1353718289:AAFcZDTQrl4J1CPiGXUvIMzegd6HSMCyK-E'
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
 
-WEBHOOK_HOST = 'https://infinite-fjord-21702.herokuapp.com/'
+# WEBHOOK_HOST = 'https://damp-earth-87185.herokuapp.com/'
 WEBHOOK_PATH = '/webhook/' + TOKEN
 WEBAPP_HOST = '0.0.0.0'
 WEBAPP_PORT = 32102
 
-PROJECT_NAME = 'infinite-fjord-21702'
+PROJECT_NAME = 'damp-earth-87185'
 
 WEBHOOK_HOST = f'https://{PROJECT_NAME}.herokuapp.com'  # Enter here your link from Heroku project settings
 WEBHOOK_URL_PATH = '/webhook/' + TOKEN
-WEBHOOK_URL = WEBHOOK_HOST + WEBHOOK_URL_PATH
+# WEBHOOK_URL = WEBHOOK_HOST + WEBHOOK_URL_PATH
 WEBHOOK_URL = urljoin(WEBHOOK_HOST, WEBHOOK_PATH)
 
 
@@ -53,33 +53,33 @@ async def start_command(message: types.Message):
     # await send_menu(message=message)
 
 
-@dp.message_handler(content_types=types.ContentTypes.PHOTO)
-async def process_photo(message: types.Message):
-    try:
-        filename = 'photo.jpg'
-        destination = DESTINATION_USER_PHOTO + filename
-        os.system("bash pytorch-CycleGAN-and-pix2pix/scripts/download_cyclegan_model.sh horse2zebra")
-        os.system("python pytorch-CycleGAN-and-pix2pix/test.py --dataroot 'pytorch-CycleGAN-and-pix2pix/photo' --name "
-                  "horse2zebra_pretrained --model test --no_dropout --gpu_ids -1")
-        await bot.send_message(message.from_user.id, 'Фотография обрабатывается...')
-        await message.photo[-1].download(destination=destination)
-        os.system("python pytorch-CycleGAN-and-pix2pix/test.py --dataroot 'pytorch-CycleGAN-and-pix2pix/photos' --name "
-                  "horse2zebra_pretrained --model test --no_dropout --gpu_ids -1")
-
-        output_path = '/results/horse2zebra_pretrained/test_latest/images/photo_fake.png'
-        with open(output_path, 'rb') as photo:
-            await bot.send_photo(message.from_user.id, photo)
-        os.remove(destination)
-        os.remove(output_path)
-    except Exception as e:
-        await bot.send_message(message.from_user.id, f'🤒 Ошибка обработки фотографии: {e}')
-"""
-@dp.message_handler(content_types=types.ContentType.TEXT)
-async def do_echo(message: types.Message):
-    text = message.text
-    if text:
-        await message.reply(text=text)
-"""
+# @dp.message_handler(content_types=types.ContentTypes.PHOTO)
+# async def process_photo(message: types.Message):
+#     try:
+#         filename = 'photo.jpg'
+#         destination = DESTINATION_USER_PHOTO + filename
+#         os.system("bash pytorch-CycleGAN-and-pix2pix/scripts/download_cyclegan_model.sh horse2zebra")
+#         os.system("python pytorch-CycleGAN-and-pix2pix/test.py --dataroot 'pytorch-CycleGAN-and-pix2pix/photo' --name "
+#                   "horse2zebra_pretrained --model test --no_dropout --gpu_ids -1")
+#         await bot.send_message(message.from_user.id, 'Фотография обрабатывается...')
+#         await message.photo[-1].download(destination=destination)
+#         os.system("python pytorch-CycleGAN-and-pix2pix/test.py --dataroot 'pytorch-CycleGAN-and-pix2pix/photos' --name "
+#                   "horse2zebra_pretrained --model test --no_dropout --gpu_ids -1")
+#
+#         output_path = '/results/horse2zebra_pretrained/test_latest/images/photo_fake.png'
+#         with open(output_path, 'rb') as photo:
+#             await bot.send_photo(message.from_user.id, photo)
+#         os.remove(destination)
+#         os.remove(output_path)
+#     except Exception as e:
+#         await bot.send_message(message.from_user.id, f'🤒 Ошибка обработки фотографии: {e}')
+# """
+# @dp.message_handler(content_types=types.ContentType.TEXT)
+# async def do_echo(message: types.Message):
+#     text = message.text
+#     if text:
+#         await message.reply(text=text)
+# """
 
 
 @dp.message_handler(content_types=types.ContentType.TEXT)
