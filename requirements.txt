@@ -1,0 +1,16 @@
+aiogram==2.9.2
+aiohttp==3.6.2
+async-timeout==3.0.1
+attrs==19.3.0
+Babel==2.8.0
+certifi==2020.6.20
+chardet==3.0.4
+idna==2.10
+multidict==4.7.6
+pytz==2020.1
+yarl==1.4.2
+https://download.pytorch.org/whl/cpu/torch-1.1.0-cp37-cp37m-linux_x86_64.whl
+https://download.pytorch.org/whl/cpu/torchvision-0.3.0-cp37-cp37m-linux_x86_64.whl
+fastai
+dominate>=2.3.1
+visdom>=0.1.8.3
