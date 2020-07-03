@@ -32,7 +32,7 @@ WEBHOOK_URL = urljoin(WEBHOOK_HOST, WEBHOOK_PATH)
 
 
 BASE_DIR = os.getcwd()
-DESTINATION_USER_PHOTO = '/pytorch-CycleGAN-and-pix2pix/photo/'
+DESTINATION_USER_PHOTO = 'pytorch-CycleGAN-and-pix2pix/photo/'
 
 @dp.message_handler(commands=['help'])
 async def send_menu(message: types.Message):
@@ -61,8 +61,8 @@ async def process_photo(message: types.Message):
         os.system("bash pytorch-CycleGAN-and-pix2pix/scripts/download_cyclegan_model.sh horse2zebra")
         await bot.send_message(message.from_user.id, 'Фотография обрабатывается...')
         await message.photo[-1].download(destination=destination)
-        os.system("python pytorch-CycleGAN-and-pix2pix/test.py --dataroot 'pytorch-CycleGAN-and-pix2pix/photo' --name "
-                  "horse2zebra_pretrained --model test --no_dropout --gpu_ids -1")
+        os.system("python pytorch-CycleGAN-and-pix2pix/test.py —dataroot 'pytorch-CycleGAN-and-pix2pix/photo' —name "
+                  "horse2zebra_pretrained —model test —no_dropout —gpu_ids -1")
         output_path = 'results/horse2zebra_pretrained/test_latest/images/photo_fake.png'
         with open(output_path, 'rb') as photo:
             await bot.send_photo(message.from_user.id, photo)
