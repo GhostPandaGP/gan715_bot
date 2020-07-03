@@ -11,7 +11,7 @@ import torchvision.models as models
 import copy
 
 
-PATH = 'models/vgg19.pth'
+PATH = 'models/vgg11.pth'
 
 
 class ContentLoss(nn.Module):
@@ -57,7 +57,7 @@ class Normalization(nn.Module):
 
 class SlowClass:
     def __init__(self):
-        self.img_size = 360
+        self.img_size = 157
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.unloader = transforms.ToPILImage()
 
