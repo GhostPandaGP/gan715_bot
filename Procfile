@@ -1,1 +1,1 @@
-web: python gan715_bot.py
+web: python gan715_bot.py --timeout 300
