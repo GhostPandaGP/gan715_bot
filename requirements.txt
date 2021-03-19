@@ -14,4 +14,4 @@ https://download.pytorch.org/whl/cpu/torchvision-0.3.0-cp37-cp37m-linux_x86_64.w
 fastai
 dominate>=2.3.1
 visdom>=0.1.8.3
-pillow==4.1.1
+pillow==8.1.1
